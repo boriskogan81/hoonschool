@@ -12,13 +12,15 @@
 ::  we're marking the kind of data we're going to produce, a noun
 ::
 :-  %noun
+:: let's create a trap and evaluate it.
+|-
 :: kethep typecasts explicitly by label, in this case, to a list of tapes
 ::
 ^-   (list tape)
 :: I want to set up my list, initially empty, and my deck of 52 cards
 ::
 =/  hands=(list tape)  [~]
-:: my hand, initially an empty string
+:: my hand, initially an empty tape
 ::
 =/  hand  ""
 ::  and my deck of 52 cards
@@ -73,11 +75,11 @@
       '3♠'
       '2♠'
 ==
-::  If my user wants zero hands, or hands of zero cards, or my deck is empty and I have no
-::  cards left to deal, or my list has x hands, which is what was originally asked for, I'm
+::  If my user wants zero hands, or hands of zero cards
+::  or my list has x hands, which is what was originally asked for, I'm
 ::  going to return the list
 ::
-?:  |(=(x 0) =(y 0) =((lent hands) x))  
+?:  |(=(x 0) =(y 0) =((lent hands) x))
   hands
 :: If I have no cards left in the deck, push the current hand into the list and return the list
 ::
@@ -95,5 +97,4 @@
 =/  card  (snag val deck)
 :: now, we recurse. We will add the card to the hand, and remove it from the deck
 ::
-$(hand (snoc card hand), deck (oust [val 1] deck))
-
+$(hand (snoc hand card), deck (oust [val 1] deck))
