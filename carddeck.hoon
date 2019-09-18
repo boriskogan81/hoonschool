@@ -75,6 +75,9 @@
       '3♠'
       '2♠'
 ==
+::  let's barhep this bad larry
+::
+|-
 ::  If my user wants zero hands, or hands of zero cards
 ::  or my list has x hands, which is what was originally asked for, I'm
 ::  going to return the list
